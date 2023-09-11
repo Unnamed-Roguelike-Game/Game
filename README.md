@@ -8,7 +8,7 @@ Repository for hosting the Godot project for Unnamed Roguelike Game.
 
 # Contributing
 1. Ensure your branches are up-to-date.
-2. Branch off of dev, and create a new branch in this format: `dev/IssueNumber-Issue_Name_or_Description`
-3. Example: `dev/A1.1-Character_Movement`
+2. Branch off of dev, and create a new branch in this format: `leaf/IssueNumber-Issue_Name_or_Description`
+3. Example: `leaf/A1.1-Character_Movement`
 4. Checkout to your newly created branch, work on your branch, and when you finish the task, open a pull request and get two approvals, and mention the issue number in your pull request.
 5. When you receive two approvals, squash and merge your pull request, and put the Github issue # of your task in the front of the merge message.
