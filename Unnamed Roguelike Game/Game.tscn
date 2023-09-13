@@ -12,12 +12,13 @@
 position = Vector2(552, 317)
 
 [node name="EnemyGroup" type="Node2D" parent="."]
+position = Vector2(-10, 12)
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
 position = Vector2(249, 398)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
-position = Vector2(889, 391)
+position = Vector2(906, 405)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(559, 323)
