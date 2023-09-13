@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bje1j8ngmq02f"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_f6m8k"]
+[ext_resource type="Texture2D" uid="uid://q27rjo51gs7l" path="res://assets/placeholder assets/character and tileset/Dungeon_Character_2.png" id="1_lwstp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33c6h"]
+radius = 6.25
+height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b82xe"]
+atlas = ExtResource("1_lwstp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gi8ww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b82xe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_78nih"]
+radius = 51.6551
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_f6m8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_33c6h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gi8ww")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_78nih")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
