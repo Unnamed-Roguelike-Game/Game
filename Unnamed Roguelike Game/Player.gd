@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var player_speed = 500.0
 
-var player_health = 100
+@onready var player_health = 100
 
 func _physics_process(delta):
 
