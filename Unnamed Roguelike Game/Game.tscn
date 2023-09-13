@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8po4tfjlujc8"]
+[gd_scene load_steps=4 format=3 uid="uid://b8po4tfjlujc8"]
 
 [ext_resource type="PackedScene" uid="uid://bxrc5aulpi3wk" path="res://Room.tscn" id="1_2tscc"]
 [ext_resource type="PackedScene" uid="uid://b06g5m8ciufci" path="res://Player.tscn" id="2_5qbtk"]
+[ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://Enemy.tscn" id="3_j2fa5"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Room" parent="." instance=ExtResource("1_2tscc")]
 
 [node name="Player" parent="." instance=ExtResource("2_5qbtk")]
-position = Vector2(46, 38)
+position = Vector2(552, 317)
+
+[node name="Enemy" parent="." instance=ExtResource("3_j2fa5")]
+position = Vector2(178, 371)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(559, 323)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_j2fa5")]
+position = Vector2(880, 468)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_j2fa5")]
+position = Vector2(556, 123)
