@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b06g5m8ciufci"]
+[gd_scene load_steps=6 format=3 uid="uid://b06g5m8ciufci"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_mnvdn"]
-[ext_resource type="Texture2D" uid="uid://c0lfpojll0yfb" path="res://Runner.png" id="2_hpp6q"]
+[ext_resource type="Texture2D" uid="uid://q27rjo51gs7l" path="res://assets/placeholder assets/character and tileset/Dungeon_Character_2.png" id="2_mu5ym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lacq0"]
-radius = 82.0
-height = 272.0
+radius = 6.75
+height = 16.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8755m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r605k"]
+atlas = ExtResource("2_mu5ym")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjec6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hpp6q")
+"texture": SubResource("AtlasTexture_r605k")
 }],
 "loop": true,
 "name": &"default",
@@ -19,6 +23,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_mnvdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,5 +31,4 @@ position = Vector2(2, 4)
 shape = SubResource("CapsuleShape2D_lacq0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_8755m")
-metadata/_edit_lock_ = true
+sprite_frames = SubResource("SpriteFrames_rjec6")
