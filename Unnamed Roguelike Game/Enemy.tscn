@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bje1j8ngmq02f"]
+[gd_scene load_steps=7 format=3 uid="uid://bje1j8ngmq02f"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_f6m8k"]
 [ext_resource type="Texture2D" uid="uid://q27rjo51gs7l" path="res://assets/placeholder assets/character and tileset/Dungeon_Character_2.png" id="1_lwstp"]
@@ -22,6 +22,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_78nih"]
+radius = 51.6551
+
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_f6m8k")
@@ -31,3 +34,8 @@ shape = SubResource("CapsuleShape2D_33c6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gi8ww")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_78nih")

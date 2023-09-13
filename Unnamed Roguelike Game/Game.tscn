@@ -11,14 +11,13 @@
 [node name="Player" parent="." instance=ExtResource("2_5qbtk")]
 position = Vector2(552, 317)
 
-[node name="Enemy" parent="." instance=ExtResource("3_j2fa5")]
-position = Vector2(178, 371)
+[node name="EnemyGroup" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
+position = Vector2(249, 398)
+
+[node name="Enemy2" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
+position = Vector2(889, 391)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(559, 323)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_j2fa5")]
-position = Vector2(880, 468)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_j2fa5")]
-position = Vector2(556, 123)
