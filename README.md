@@ -3,16 +3,20 @@ Repository for hosting the Godot project for Unnamed Roguelike Game.
 
 # Project Set-up
 1. Download Godot 4.1.1 for your pc from the [Godot Github releases page](https://github.com/godotengine/godot/releases), and unzip the executable.
-2. Clone the project repository with `git clone https://github.com/Unnamed-Roguelike-Game/Game.git`
-3. Import the project in Godot by pressing import, then navigating to where you cloned the repository, then clicking on the `project.godot` file in the `Unnamed Roguelike Game` folder.
+2. Install git from the [Git website](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. Open a terminal (I use [Hyper](https://hyper.is/) but you can use the normal command line) in the folder you would like to store the repository in.
+4. Clone the project repository with `git clone https://github.com/Unnamed-Roguelike-Game/Game.git`
+5. Import the project in Godot by pressing import, then navigating to where you cloned the repository, then clicking on the `project.godot` file in the `Unnamed Roguelike Game` folder.
 
 # Contributing
 1. Ensure your branches are up-to-date.
 2. Choose a task that you are interested in, assign yourself, and move it to in-progress.
-3. Branch off of main, and create a new branch in this format: `dev/IssueNumber-Issue_Name_or_Description`
-4. Example: `dev/A1.1-Character_Movement`
-5. Checkout to your newly created branch, work on your branch, and when you finish the task, open a pull request and get two approvals, and mention the issue number in your pull request.
-6. When you receive two approvals, squash and merge your pull request, and put the Github issue # of your task in the front of the merge message.
+3. Open a terminal in the `Game` folder.
+4. Read up on the Git Basics section below or ask questions if you are unfamiliar with Git.
+5. Branch off of main, and create a new branch in this format: `dev/IssueNumber-Issue_Name_or_Description`
+6. Example: `dev/A1.1-Character_Movement`
+7. Checkout to your newly created branch, work on your branch, and when you finish the task, open a pull request and get two approvals, and mention the issue number in your pull request.
+8. When you receive two approvals, squash and merge your pull request, and put the Github issue # of your task in the front of the merge message.
 
 # Getting Help
 1. Do not be afraid to ask questions.
@@ -27,4 +31,4 @@ Repository for hosting the Godot project for Unnamed Roguelike Game.
 - Use `git push` to push your changes to your current branch.
 - When you finish your task, open up a pull request to merge your changes into main.
 - From here, get two approvals, make any necessary changes, and squash and merge your changes, and place the issue number for the task you worked on in front of the merge message.
-- Once merged, close your issue and set its status to Done.
+- Once merged, delete the branch, close your issue, and set its status to Done.
