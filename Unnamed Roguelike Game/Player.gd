@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var player_speed = 300.0
-var player_health = 100
 
 @onready var player_health = 100
 
