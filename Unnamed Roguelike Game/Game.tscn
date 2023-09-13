@@ -1,25 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8po4tfjlujc8"]
+[gd_scene load_steps=6 format=3 uid="uid://ck7dgjuf7h6os"]
 
-[ext_resource type="PackedScene" uid="uid://bxrc5aulpi3wk" path="res://Room.tscn" id="1_2tscc"]
+[ext_resource type="PackedScene" path="res://Room.tscn" id="1_2tscc"]
 [ext_resource type="PackedScene" uid="uid://b06g5m8ciufci" path="res://Player.tscn" id="2_5qbtk"]
 [ext_resource type="Script" path="res://HP.gd" id="3_emkpw"]
-[ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://Enemy.tscn" id="3_j2fa5"]
+[ext_resource type="PackedScene" path="res://Enemy.tscn" id="3_j2fa5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pssym"]
+radius = 7.0
+height = 15.0
 
 [node name="Game" type="Node2D"]
 
 [node name="Room" parent="." instance=ExtResource("1_2tscc")]
 
 [node name="Player" parent="." instance=ExtResource("2_5qbtk")]
-position = Vector2(552, 317)
+position = Vector2(548, 92)
 
 [node name="EnemyGroup" type="Node2D" parent="."]
 position = Vector2(-10, 12)
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
-position = Vector2(249, 398)
+position = Vector2(108, 546)
+
+[node name="Area2D" type="Area2D" parent="EnemyGroup/Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyGroup/Enemy/Area2D"]
+shape = SubResource("CapsuleShape2D_pssym")
+debug_color = Color(0.972549, 0, 0.447059, 0)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
-position = Vector2(906, 405)
+position = Vector2(1045, 553)
+
+[node name="Area2D" type="Area2D" parent="EnemyGroup/Enemy2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyGroup/Enemy2/Area2D"]
+shape = SubResource("CapsuleShape2D_pssym")
+debug_color = Color(0.972549, 0, 0.447059, 0)
+
+[node name="Enemy3" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
+position = Vector2(558, 446)
+
+[node name="Area2D" type="Area2D" parent="EnemyGroup/Enemy3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyGroup/Enemy3/Area2D"]
+shape = SubResource("CapsuleShape2D_pssym")
+debug_color = Color(0.972549, 0, 0.447059, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(559, 323)
@@ -36,3 +61,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 0.937255)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 script = ExtResource("3_emkpw")
+
+[connection signal="body_entered" from="EnemyGroup/Enemy/Area2D" to="EnemyGroup/Enemy" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="EnemyGroup/Enemy2/Area2D" to="EnemyGroup/Enemy2" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="EnemyGroup/Enemy3/Area2D" to="EnemyGroup/Enemy3" method="_on_area_2d_body_entered"]

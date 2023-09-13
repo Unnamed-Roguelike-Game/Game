@@ -10,3 +10,6 @@ func _physics_process(delta):
 	velocity = input_direction * player_speed * delta
 	
 	move_and_collide(velocity)
+
+
+

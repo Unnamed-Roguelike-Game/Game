@@ -12,3 +12,9 @@ func _physics_process(delta):
 	velocity = (direction_of_player * ENEMY_SPEED * delta)
 	
 	move_and_collide(velocity)
+
+
+func _on_area_2d_body_entered(body):
+	if body.name == "Player":
+		body.player_health -= 10
+		
