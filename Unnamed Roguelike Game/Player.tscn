@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://q27rjo51gs7l" path="res://assets/placeholder assets/character and tileset/Dungeon_Character_2.png" id="2_mu5ym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lacq0"]
-radius = 82.0
-height = 272.0
+radius = 6.75
+height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r605k"]
 atlas = ExtResource("2_mu5ym")
@@ -23,11 +23,11 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_mnvdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lacq0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_rjec6")
