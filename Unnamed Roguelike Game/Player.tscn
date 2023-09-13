@@ -24,6 +24,9 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(4, 4)
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4278190080
 script = ExtResource("1_mnvdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
