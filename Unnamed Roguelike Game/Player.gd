@@ -7,7 +7,6 @@ var player_speed = 300.0
 var enemies_in_hitbox = []
 
 
-
 func _physics_process(delta):
 
 	var input_direction = Input.get_vector("left", "right", "up", "down").normalized()
@@ -15,9 +14,11 @@ func _physics_process(delta):
 	
 	move_and_collide(velocity)
 
+
 func _player_death():
 	if player_health <= 0:
 		self.queue_free()
+
 
 func _player_hit():
 	player_health -= 10

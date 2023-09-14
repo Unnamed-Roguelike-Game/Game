@@ -12,6 +12,3 @@ func _physics_process(delta):
 		velocity = (direction_of_player * ENEMY_SPEED * delta)
 	
 		move_and_collide(velocity)
-
-
-
