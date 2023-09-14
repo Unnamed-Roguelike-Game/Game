@@ -8,4 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "HP: " + str(get_node("../../Player").get("player_health"))
+	if get_node("../../Player") != null:
+		text = "HP: " + str(get_node("../../Player").get("player_health"))
+	else:
+		text = "You have died"

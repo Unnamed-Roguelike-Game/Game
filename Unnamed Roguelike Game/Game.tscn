@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ck7dgjuf7h6os"]
 
-[ext_resource type="PackedScene" path="res://Room.tscn" id="1_2tscc"]
+[ext_resource type="PackedScene" uid="uid://dda8c5x4mggrb" path="res://Room.tscn" id="1_2tscc"]
 [ext_resource type="PackedScene" uid="uid://b06g5m8ciufci" path="res://Player.tscn" id="2_5qbtk"]
 [ext_resource type="Script" path="res://HP.gd" id="3_emkpw"]
 [ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://Enemy.tscn" id="3_j2fa5"]
