@@ -27,6 +27,7 @@ func _player_hit():
 	modulate.b = 0
 	modulate.g = 0
 	$Hurt_Timer.start()
+	#Psuedo Hurt animation to show when I-Frames start/end
 	var tween = get_tree().create_tween()
 	var tween2 = get_tree().create_tween()
 	var tween3 = get_tree().create_tween()
