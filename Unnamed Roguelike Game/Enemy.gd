@@ -6,9 +6,9 @@ extends CharacterBody2D
 var ENEMY_SPEED = 100.0
 
 func _physics_process(delta):
+	if get_node("../../Player") != null:
+		var direction_of_player = (player.position - self.position).normalized()
 	
-	var direction_of_player = (player.position - self.position).normalized()
+		velocity = (direction_of_player * ENEMY_SPEED * delta)
 	
-	velocity = (direction_of_player * ENEMY_SPEED * delta)
-	
-	move_and_collide(velocity)
+		move_and_collide(velocity)

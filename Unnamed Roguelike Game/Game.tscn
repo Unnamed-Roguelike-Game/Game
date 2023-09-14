@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8po4tfjlujc8"]
+[gd_scene load_steps=5 format=3 uid="uid://ck7dgjuf7h6os"]
 
-[ext_resource type="PackedScene" uid="uid://bxrc5aulpi3wk" path="res://Room.tscn" id="1_2tscc"]
+[ext_resource type="PackedScene" uid="uid://dda8c5x4mggrb" path="res://Room.tscn" id="1_2tscc"]
 [ext_resource type="PackedScene" uid="uid://b06g5m8ciufci" path="res://Player.tscn" id="2_5qbtk"]
 [ext_resource type="Script" path="res://HP.gd" id="3_emkpw"]
 [ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://Enemy.tscn" id="3_j2fa5"]
@@ -10,16 +10,19 @@
 [node name="Room" parent="." instance=ExtResource("1_2tscc")]
 
 [node name="Player" parent="." instance=ExtResource("2_5qbtk")]
-position = Vector2(552, 317)
+position = Vector2(548, 92)
 
 [node name="EnemyGroup" type="Node2D" parent="."]
 position = Vector2(-10, 12)
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
-position = Vector2(249, 398)
+position = Vector2(108, 546)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
-position = Vector2(906, 405)
+position = Vector2(1045, 553)
+
+[node name="Enemy3" parent="EnemyGroup" instance=ExtResource("3_j2fa5")]
+position = Vector2(558, 446)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(559, 323)
