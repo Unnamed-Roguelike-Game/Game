@@ -1,5 +1,6 @@
 extends Label
 
+@onready var player = $"../../Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_node("../../Player") != null:
-		text = "HP: " + str(get_node("../../Player").get("player_health"))
+	if player != null:
+		text = "HP: " + str(player.get("player_health"))
 	else:
 		text = "You have died"
