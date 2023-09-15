@@ -33,7 +33,7 @@ func handle_movement_input(delta: float) -> void:
 	move_and_collide(velocity)
 
 
-func handle_action_input():
+func handle_action_input() -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
