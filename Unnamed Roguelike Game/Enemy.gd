@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player = $"../../Player"
 @onready var enemy_sprite = $"AnimatedSprite2D"
 
-var ENEMY_SPEED = 100.0
+const ENEMY_SPEED = 100.0
 
 func _physics_process(delta):
 	if player != null:
