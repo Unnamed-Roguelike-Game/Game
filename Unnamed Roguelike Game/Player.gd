@@ -7,7 +7,6 @@ extends CharacterBody2D
 @onready var hurt_timer: Timer = $"Hurt_Timer"
 @onready var animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
 
-
 var enemies_in_hitbox: Array = []
 
 var max_player_health: int = 100
@@ -18,27 +17,31 @@ var ability_used_count: int = 0
 
 
 func _physics_process(delta: float) -> void:
+	
 	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
+	var mouse_direction: Vector2 = get_local_mouse_position().normalized()
 	
-	velocity = input_direction * player_speed * delta
-	
-	handle_animations(input_direction)
+	handle_movement_input(delta)
+	handle_action_input()
+	handle_animations(input_direction, mouse_direction)
 	handle_damage()
-	
+
+
+func handle_movement_input(delta: float) -> void:
+	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
+	velocity = input_direction * player_speed * delta
+	move_and_collide(velocity)
+
+
+func handle_action_input():
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
 	if Input.is_action_just_pressed("use_ability"):
 		use_heal_ability(10)
-	
-	move_and_collide(velocity)
 
 
-func handle_animations(input_direction: Vector2) -> void:
-	
-	var mouse_direction: Vector2 = get_local_mouse_position().normalized()
-	
-	flip_sprite_direction(mouse_direction)
+func handle_animations(input_direction: Vector2, mouse_direction: Vector2) -> void:
 	
 	# vertical_range represents the angle of the mouse relative to the character
 	# within_vertical_range will check if the mouse is within the bounds of vertical_range,
@@ -49,6 +52,8 @@ func handle_animations(input_direction: Vector2) -> void:
 	
 	var player_looking_back: bool = mouse_direction.y < 0
 	var player_looking_forward: bool = mouse_direction.y > 0
+	
+	flip_sprite_direction(mouse_direction)
 	
 	# Player is not moving
 	if input_direction == Vector2.ZERO:
@@ -69,13 +74,6 @@ func handle_animations(input_direction: Vector2) -> void:
 			animated_sprite_2d.play("RunSide")
 
 
-func flip_sprite_direction(mouse_direction: Vector2) -> void:
-	if mouse_direction.x < 0:
-		animated_sprite_2d.flip_h = true
-	else:
-		animated_sprite_2d.flip_h = false
-
-
 func handle_damage() -> void:
 	if enemies_in_hitbox.is_empty():
 		return
@@ -85,6 +83,13 @@ func handle_damage() -> void:
 	
 	player_hit()
 	hurt_timer.start(1)
+
+
+func flip_sprite_direction(mouse_direction: Vector2) -> void:
+	if mouse_direction.x < 0:
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 
 
 func use_heal_ability(health_to_heal: int) -> void:
