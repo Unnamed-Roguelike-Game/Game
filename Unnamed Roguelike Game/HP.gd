@@ -5,6 +5,6 @@ extends Label
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
 	if player != null:
-		text = "HP: " + str(player.get("player_health"))
+		text = "HP: " + str(player.get("current_player_health"))
 	else:
 		text = "You have died"
