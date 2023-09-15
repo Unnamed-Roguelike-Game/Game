@@ -4,10 +4,17 @@ extends CharacterBody2D
 
 const ENEMY_SPEED: float = 100.0
 
+var current_enemy_health: int = 100
+
 func _physics_process(delta: float) -> void:
-	if player != null:
-		var direction_of_player: Vector2 = (player.position - self.position).normalized()
+	if player == null:
+		return
 	
-		velocity = (direction_of_player * ENEMY_SPEED * delta)
+	if current_enemy_health <= 0:
+		queue_free()
 	
-		move_and_collide(velocity)
+	var direction_of_player: Vector2 = (player.position - self.position).normalized()
+
+	velocity = (direction_of_player * ENEMY_SPEED * delta)
+
+	move_and_collide(velocity)
