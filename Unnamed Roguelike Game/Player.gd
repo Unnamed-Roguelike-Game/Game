@@ -38,24 +38,29 @@ func handle_animations(input_direction: Vector2) -> void:
 	
 	var mouse_direction: Vector2 = get_local_mouse_position().normalized()
 	
+	flip_sprite_direction(mouse_direction)
+	
+	# vertical_range represents the angle of the mouse relative to the character
+	# within_vertical_range will check if the mouse is within the bounds of vertical_range,
+	# to determine if the player is looking far up/down enough to justify making them
+	# face forward/back in their sprite, note that 0.8 is some arbitrary number, could be higher or lower
+	var vertical_range: float = 0.8
+	var within_vertical_range: bool = mouse_direction.x > -vertical_range and mouse_direction.x < vertical_range
+	
 	# Player is not moving
 	if input_direction == Vector2.ZERO:
-		flip_sprite_direction(mouse_direction)
-		
-		if mouse_direction.y < 0 and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+		if mouse_direction.y < 0 and within_vertical_range:
 			animated_sprite_2d.play("IdleBack")
-		elif mouse_direction.y > 0  and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+		elif mouse_direction.y > 0  and within_vertical_range:
 			animated_sprite_2d.play("IdleForward")
 		else:
 			animated_sprite_2d.play("IdleSide")
 	
 	# Player is moving
 	else:
-		flip_sprite_direction(mouse_direction)
-		
-		if mouse_direction.y < 0 and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+		if mouse_direction.y < 0 and within_vertical_range:
 			animated_sprite_2d.play("RunBack")
-		elif mouse_direction.y > 0  and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+		elif mouse_direction.y > 0  and within_vertical_range:
 			animated_sprite_2d.play("RunForward")
 		else:
 			animated_sprite_2d.play("RunSide")
