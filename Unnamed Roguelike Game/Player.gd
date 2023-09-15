@@ -14,7 +14,7 @@ var current_player_health: int = 100
 var max_ability_usage: int = 5
 var ability_used_count: int = 0
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
 
 	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
 	
@@ -30,7 +30,7 @@ func _physics_process(delta) -> void:
 	move_and_collide(velocity)
 
 
-func use_heal_ability(health_to_heal) -> void:
+func use_heal_ability(health_to_heal: int) -> void:
 	if ability_used_count >= max_ability_usage:
 		return 
 	
@@ -40,7 +40,7 @@ func use_heal_ability(health_to_heal) -> void:
 
 
 # Heal player up to no more than their current max HP.
-func heal_player_hp(health_to_heal) -> void:
+func heal_player_hp(health_to_heal: int) -> void:
 	current_player_health += health_to_heal
 	
 	if current_player_health > max_player_health:
@@ -74,7 +74,7 @@ func player_hit() -> void:
 	tween3.tween_property(self, "modulate:g", 1, 1)
 
 
-func _on_hurtbox_body_entered(body) -> void:
+func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if "Enemy" in body.name:
 		if enemies_in_hitbox.is_empty():
 			enemies_in_hitbox.push_back(body.name)
@@ -82,7 +82,7 @@ func _on_hurtbox_body_entered(body) -> void:
 			player_hit()
 
 
-func _on_hurtbox_body_exited(body) -> void:
+func _on_hurtbox_body_exited(body: Node2D) -> void:
 	if "Enemy" in body.name:
 		enemies_in_hitbox.pop_back()
 

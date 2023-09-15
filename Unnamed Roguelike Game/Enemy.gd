@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 const ENEMY_SPEED: float = 100.0
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	if player != null:
 		var direction_of_player: Vector2 = (player.position - self.position).normalized()
 	
