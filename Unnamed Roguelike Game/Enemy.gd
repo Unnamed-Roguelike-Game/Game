@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 const ENEMY_SPEED: float = 100.0
 
-var current_enemy_health: float = 100
+var current_enemy_health: int = 100
 
 func _physics_process(delta: float) -> void:
 	if player == null:
