@@ -14,28 +14,29 @@ func _physics_process(delta):
 	velocity = input_direction * player_speed * delta
 	
 	if Input.is_action_just_pressed("use_ability"):
-		heal_player_hp(10)
-		ability_used_count += 1
+		use_heal_ability(10)
+		
 	
 	move_and_collide(velocity)
 
 
-# Heal player up to no more than their current max HP.
-func heal_player_hp(health_to_heal):
-	
+func use_heal_ability(health_to_heal):
 	if ability_used_count >= max_ability_usage:
 		return 
-	
+	else:
+		heal_player_hp(health_to_heal)
+		ability_used_count += 1
+
+# Heal player up to no more than their current max HP.
+func heal_player_hp(health_to_heal):
 	player_health += health_to_heal
 	
 	if player_health > max_player_health:
 		player_health = max_player_health
 
-
 func player_death():
 	if player_health <= 0:
 		self.queue_free()
-
 
 func player_hit():
 	player_health -= 10

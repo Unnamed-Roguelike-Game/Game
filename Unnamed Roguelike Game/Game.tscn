@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck7dgjuf7h6os"]
+[gd_scene load_steps=6 format=3 uid="uid://ck7dgjuf7h6os"]
 
 [ext_resource type="PackedScene" uid="uid://dda8c5x4mggrb" path="res://Room.tscn" id="1_2tscc"]
 [ext_resource type="PackedScene" uid="uid://b06g5m8ciufci" path="res://Player.tscn" id="2_5qbtk"]
 [ext_resource type="Script" path="res://HP.gd" id="3_emkpw"]
 [ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://Enemy.tscn" id="3_j2fa5"]
+[ext_resource type="Script" path="res://Ability.gd" id="5_vtb4k"]
 
 [node name="Game" type="Node2D"]
 
@@ -39,3 +40,13 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 0.937255)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 script = ExtResource("3_emkpw")
+
+[node name="Ability" type="Label" parent="UI"]
+offset_left = 1031.0
+offset_top = 14.0
+offset_right = 1153.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 0.670588, 0.788235, 1)
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 3
+script = ExtResource("5_vtb4k")
