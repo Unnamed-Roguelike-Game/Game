@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 const ENEMY_SPEED: float = 100.0
 
+var current_enemy_health: float = 100
+
 func _physics_process(delta: float) -> void:
 	if player != null:
 		var direction_of_player: Vector2 = (player.position - self.position).normalized()
