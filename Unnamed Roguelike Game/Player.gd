@@ -1,20 +1,37 @@
 extends CharacterBody2D
 
+
+@export var player_speed = 300.0
+
 var max_ability_usage = 5
 var max_player_health = 100
 
-var player_speed = 300.0
+
 var player_health = 100
 
 var enemies_in_hitbox = []
+
+
+@export var Arrow : PackedScene
+
+@onready var arrow_direction = $"Projectile Spawn"
+	
+
 var ability_used_count = 0
 
 func _physics_process(delta):
+
 	var input_direction = Input.get_vector("left", "right", "up", "down").normalized()
+	
 	velocity = input_direction * player_speed * delta
 	
+
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+
 	if Input.is_action_just_pressed("use_ability"):
 		use_heal_ability(10)
+
 	
 	move_and_collide(velocity)
 
@@ -38,7 +55,16 @@ func player_death():
 	if player_health <= 0:
 		self.queue_free()
 
+
+func shoot():
+	var arrow = Arrow.instantiate()
+	arrow_direction.look_at(get_global_mouse_position())
+	owner.add_child(arrow)
+	arrow.transform = $"Projectile Spawn".global_transform
+
+
 func player_hit():
+
 	player_health -= 10
 	player_death()
 	modulate.a = 0.5
@@ -59,14 +85,12 @@ func _on_hurtbox_body_entered(body):
 		if enemies_in_hitbox.is_empty():
 			enemies_in_hitbox.push_back(body.name)
 		if modulate.a == 1:
+
 			player_hit()
-		#print(enemies_in_hitbox)
-
-
+		
 func _on_hurtbox_body_exited(body):
 	if "Enemy" in body.name:
 		enemies_in_hitbox.pop_back()
-		#print(enemies_in_hitbox)
 
 
 func _on_hurt_timer_timeout():

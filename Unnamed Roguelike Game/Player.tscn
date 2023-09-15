@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b06g5m8ciufci"]
+[gd_scene load_steps=8 format=3 uid="uid://b06g5m8ciufci"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_mnvdn"]
+[ext_resource type="PackedScene" uid="uid://vpxnb4ig426g" path="res://Player_Projectile.tscn" id="2_515bq"]
 [ext_resource type="Texture2D" uid="uid://q27rjo51gs7l" path="res://assets/placeholder assets/character and tileset/Dungeon_Character_2.png" id="2_mu5ym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lacq0"]
@@ -26,30 +27,35 @@ animations = [{
 radius = 7.5
 height = 17.5
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(4, 4)
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_mnvdn")
+Arrow = ExtResource("2_515bq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 shape = SubResource("CapsuleShape2D_lacq0")
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_rjec6")
 metadata/_edit_lock_ = true
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=["Player"]]
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" groups=["Player"]]
 shape = SubResource("CapsuleShape2D_pcabg")
 debug_color = Color(0.988235, 0, 0.286275, 0)
+metadata/_edit_lock_ = true
 
-[node name="Hurt_Timer" type="Timer" parent="."]
+[node name="Hurt_Timer" type="Timer" parent="." groups=["Player"]]
 wait_time = 1.5
 one_shot = true
+
+[node name="Projectile Spawn" type="Marker2D" parent="." groups=["Player"]]
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
