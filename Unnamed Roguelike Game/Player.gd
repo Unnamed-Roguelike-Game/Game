@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var arrow_direction: Marker2D = $"Projectile Spawn"
 @onready var hurt_timer: Timer = $"Hurt_Timer"
+@onready var animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
 
 var enemies_in_hitbox: Array = []
 
@@ -14,20 +15,81 @@ var current_player_health: int = 100
 var max_ability_usage: int = 5
 var ability_used_count: int = 0
 
+
 func _physics_process(delta: float) -> void:
-
+	
 	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
+	var mouse_direction: Vector2 = get_local_mouse_position().normalized()
 	
-	velocity = input_direction * player_speed * delta
-	
+	handle_movement_input(delta)
+	handle_action_input()
+	handle_animations(input_direction, mouse_direction)
+	handle_damage()
 
+
+func handle_movement_input(delta: float) -> void:
+	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
+	velocity = input_direction * player_speed * delta
+	move_and_collide(velocity)
+
+
+func handle_action_input() -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
 	if Input.is_action_just_pressed("use_ability"):
 		use_heal_ability(10)
+
+
+func handle_animations(input_direction: Vector2, mouse_direction: Vector2) -> void:
 	
-	move_and_collide(velocity)
+	# vertical_range represents the angle of the mouse relative to the character
+	# within_vertical_range will check if the mouse is within the bounds of vertical_range,
+	# to determine if the player is looking far up/down enough to justify making them
+	# face forward/back in their sprite, note that 0.8 is some arbitrary number, could be higher or lower
+	var vertical_range: float = 0.8
+	var within_vertical_range: bool = mouse_direction.x > -vertical_range and mouse_direction.x < vertical_range
+	
+	var player_looking_back: bool = mouse_direction.y < 0
+	var player_looking_forward: bool = mouse_direction.y > 0
+	
+	flip_sprite_direction(mouse_direction)
+	
+	# Player is not moving
+	if input_direction == Vector2.ZERO:
+		if player_looking_back and within_vertical_range:
+			animated_sprite_2d.play("IdleBack")
+		elif player_looking_forward  and within_vertical_range:
+			animated_sprite_2d.play("IdleForward")
+		else:
+			animated_sprite_2d.play("IdleSide")
+	
+	# Player is moving
+	else:
+		if player_looking_back and within_vertical_range:
+			animated_sprite_2d.play("RunBack")
+		elif player_looking_forward  and within_vertical_range:
+			animated_sprite_2d.play("RunForward")
+		else:
+			animated_sprite_2d.play("RunSide")
+
+
+func handle_damage() -> void:
+	if enemies_in_hitbox.is_empty():
+		return
+	
+	if !hurt_timer.is_stopped():
+		return
+	
+	player_hit()
+	hurt_timer.start(1)
+
+
+func flip_sprite_direction(mouse_direction: Vector2) -> void:
+	if mouse_direction.x < 0:
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 
 
 func use_heal_ability(health_to_heal: int) -> void:
@@ -44,11 +106,6 @@ func heal_player_hp(health_to_heal: int) -> void:
 	current_player_health = min(current_player_health + health_to_heal, max_player_health)
 
 
-func player_death():
-	if current_player_health <= 0:
-		self.queue_free()
-
-
 func shoot() -> void:
 	var arrow: Node2D = Arrow.instantiate()
 	arrow_direction.look_at(get_global_mouse_position())
@@ -58,36 +115,16 @@ func shoot() -> void:
 
 func player_hit() -> void:
 	current_player_health -= 10
-	player_death()
-	modulate.a = 0.5
-	modulate.b = 0
-	modulate.g = 0
-	hurt_timer.start()
-	#Psuedo Hurt animation to show when I-Frames start/end
-	var tween: Tween = get_tree().create_tween()
-	var tween2: Tween = get_tree().create_tween()
-	var tween3: Tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate:a", 1, 1.5)
-	tween2.tween_property(self, "modulate:b", 1, 1)
-	tween3.tween_property(self, "modulate:g", 1, 1)
+	
+	if current_player_health <= 0:
+		self.queue_free()
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if "Enemy" in body.name:
-		if enemies_in_hitbox.is_empty():
-			enemies_in_hitbox.push_back(body.name)
-		if modulate.a == 1:
-			player_hit()
+		enemies_in_hitbox.push_back(body.name)
 
 
 func _on_hurtbox_body_exited(body: Node2D) -> void:
 	if "Enemy" in body.name:
 		enemies_in_hitbox.pop_back()
-
-
-func _on_hurt_timer_timeout() -> void:
-	modulate.a = 1
-	modulate.b = 1
-	modulate.g = 1
-	if !enemies_in_hitbox.is_empty():
-		player_hit()
