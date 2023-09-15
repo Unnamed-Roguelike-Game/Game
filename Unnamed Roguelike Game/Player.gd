@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var arrow_direction: Marker2D = $"Projectile Spawn"
 @onready var hurt_timer: Timer = $"Hurt_Timer"
+@onready var animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
 
 var enemies_in_hitbox: Array = []
 
@@ -20,7 +21,6 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = input_direction * player_speed * delta
 	
-
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 		use_heal_ability(10)
 	
 	move_and_collide(velocity)
-
 
 func use_heal_ability(health_to_heal: int) -> void:
 	if ability_used_count >= max_ability_usage:
