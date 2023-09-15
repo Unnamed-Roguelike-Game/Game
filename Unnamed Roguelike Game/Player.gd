@@ -1,28 +1,45 @@
 extends CharacterBody2D
 
-var player_speed = 300.0
+var max_ability_usage = 5
+var max_player_health = 100
 
-@onready var player_health = 100
+var player_speed = 300.0
+var player_health = 100
 
 var enemies_in_hitbox = []
-
+var ability_used_count = 0
 
 func _physics_process(delta):
-
 	var input_direction = Input.get_vector("left", "right", "up", "down").normalized()
 	velocity = input_direction * player_speed * delta
+	
+	if Input.is_action_just_pressed("use_ability"):
+		heal_player_hp(10)
+		ability_used_count += 1
 	
 	move_and_collide(velocity)
 
 
-func _player_death():
+# Heal player up to no more than their current max HP.
+func heal_player_hp(health_to_heal):
+	
+	if ability_used_count >= max_ability_usage:
+		return 
+	
+	player_health += health_to_heal
+	
+	if player_health > max_player_health:
+		player_health = max_player_health
+
+
+func player_death():
 	if player_health <= 0:
 		self.queue_free()
 
 
-func _player_hit():
+func player_hit():
 	player_health -= 10
-	_player_death()
+	player_death()
 	modulate.a = 0.5
 	modulate.b = 0
 	modulate.g = 0
@@ -41,7 +58,7 @@ func _on_hurtbox_body_entered(body):
 		if enemies_in_hitbox.is_empty():
 			enemies_in_hitbox.push_back(body.name)
 		if modulate.a == 1:
-			_player_hit()
+			player_hit()
 		#print(enemies_in_hitbox)
 
 
@@ -56,4 +73,4 @@ func _on_hurt_timer_timeout():
 	modulate.b = 1
 	modulate.g = 1
 	if !enemies_in_hitbox.is_empty():
-		_player_hit()
+		player_hit()
