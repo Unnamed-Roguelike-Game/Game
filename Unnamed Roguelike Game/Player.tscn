@@ -186,6 +186,7 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ju47r")
 animation = &"IdleForward"
+autoplay = "IdleForward"
 metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Player"]]

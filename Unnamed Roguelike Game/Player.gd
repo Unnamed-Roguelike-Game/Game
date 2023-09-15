@@ -47,20 +47,23 @@ func handle_animations(input_direction: Vector2) -> void:
 	var vertical_range: float = 0.8
 	var within_vertical_range: bool = mouse_direction.x > -vertical_range and mouse_direction.x < vertical_range
 	
+	var player_looking_back: bool = mouse_direction.y < 0
+	var player_looking_forward: bool = mouse_direction.y > 0
+	
 	# Player is not moving
 	if input_direction == Vector2.ZERO:
-		if mouse_direction.y < 0 and within_vertical_range:
+		if player_looking_back and within_vertical_range:
 			animated_sprite_2d.play("IdleBack")
-		elif mouse_direction.y > 0  and within_vertical_range:
+		elif player_looking_forward  and within_vertical_range:
 			animated_sprite_2d.play("IdleForward")
 		else:
 			animated_sprite_2d.play("IdleSide")
 	
 	# Player is moving
 	else:
-		if mouse_direction.y < 0 and within_vertical_range:
+		if player_looking_back and within_vertical_range:
 			animated_sprite_2d.play("RunBack")
-		elif mouse_direction.y > 0  and within_vertical_range:
+		elif player_looking_forward  and within_vertical_range:
 			animated_sprite_2d.play("RunForward")
 		else:
 			animated_sprite_2d.play("RunSide")
