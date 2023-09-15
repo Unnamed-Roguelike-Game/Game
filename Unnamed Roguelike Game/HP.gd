@@ -1,15 +1,10 @@
 extends Label
 
-@onready var player = $"../../Player"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+@onready var player: CharacterBody2D = $"../../Player"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if player != null:
-		text = "HP: " + str(player.get("player_health"))
+		text = "HP: " + str(player.get("current_player_health"))
 	else:
 		text = "You have died"
