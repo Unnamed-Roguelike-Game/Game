@@ -9,3 +9,6 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if !(body.is_in_group("Player")):
 		queue_free()
+	
+	if "Enemy" in body.name:
+		body.current_enemy_health -= 25
