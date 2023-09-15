@@ -15,7 +15,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("use_ability"):
 		use_heal_ability(10)
-		
 	
 	move_and_collide(velocity)
 
@@ -23,6 +22,7 @@ func _physics_process(delta):
 func use_heal_ability(health_to_heal):
 	if ability_used_count >= max_ability_usage:
 		return 
+	
 	else:
 		heal_player_hp(health_to_heal)
 		ability_used_count += 1
