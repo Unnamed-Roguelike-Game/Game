@@ -1,13 +1,12 @@
 extends CharacterBody2D
 
-@onready var player = $"../../Player"
-@onready var enemy_sprite = $"AnimatedSprite2D"
+@onready var player: CharacterBody2D = $"../../Player"
 
-const ENEMY_SPEED = 100.0
+const ENEMY_SPEED: float = 100.0
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if player != null:
-		var direction_of_player = (player.position - self.position).normalized()
+		var direction_of_player: Vector2 = (player.position - self.position).normalized()
 	
 		velocity = (direction_of_player * ENEMY_SPEED * delta)
 	
