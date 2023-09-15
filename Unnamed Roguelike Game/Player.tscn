@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b06g5m8ciufci"]
+[gd_scene load_steps=25 format=3 uid="uid://b06g5m8ciufci"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_mnvdn"]
 [ext_resource type="PackedScene" uid="uid://vpxnb4ig426g" path="res://Player_Projectile.tscn" id="2_515bq"]
@@ -171,133 +171,6 @@ animations = [{
 radius = 5.5
 height = 24.0
 
-[sub_resource type="Animation" id="Animation_sy5mw"]
-resource_name = "IdleForward"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_8da0p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ms1sl"]
-resource_name = "RunForward"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_dr8bm"]
-resource_name = "IdleSide"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
-}
-
-[sub_resource type="Animation" id="Animation_v71ee"]
-resource_name = "RunSide"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_ky20m"]
-resource_name = "IdleBack"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
-}
-
-[sub_resource type="Animation" id="Animation_sj0qm"]
-resource_name = "RunBack"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibnfd"]
-_data = {
-"IdleBack": SubResource("Animation_ky20m"),
-"IdleForward": SubResource("Animation_sy5mw"),
-"IdleSide": SubResource("Animation_dr8bm"),
-"RESET": SubResource("Animation_8da0p"),
-"RunBack": SubResource("Animation_sj0qm"),
-"RunForward": SubResource("Animation_ms1sl"),
-"RunSide": SubResource("Animation_v71ee")
-}
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(4, 4)
 motion_mode = 1
@@ -328,11 +201,6 @@ wait_time = 1.5
 one_shot = true
 
 [node name="Projectile Spawn" type="Marker2D" parent="." groups=["Player"]]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ibnfd")
-}
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]

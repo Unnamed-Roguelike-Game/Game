@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var hurt_timer: Timer = $"Hurt_Timer"
 @onready var animated_sprite_2d: AnimatedSprite2D = $"AnimatedSprite2D"
 
+
 var enemies_in_hitbox: Array = []
 
 var max_player_health: int = 100
@@ -15,8 +16,8 @@ var current_player_health: int = 100
 var max_ability_usage: int = 5
 var ability_used_count: int = 0
 
-func _physics_process(delta: float) -> void:
 
+func _physics_process(delta: float) -> void:
 	var input_direction: Vector2 = Input.get_vector("left", "right", "up", "down").normalized()
 	
 	velocity = input_direction * player_speed * delta
@@ -34,7 +35,37 @@ func _physics_process(delta: float) -> void:
 
 
 func handle_animations(input_direction: Vector2) -> void:
-	pass
+	
+	var mouse_direction: Vector2 = get_local_mouse_position().normalized()
+	
+	# Player is not moving
+	if input_direction == Vector2.ZERO:
+		flip_sprite_direction(mouse_direction)
+		
+		if mouse_direction.y < 0 and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+			animated_sprite_2d.play("IdleBack")
+		elif mouse_direction.y > 0  and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+			animated_sprite_2d.play("IdleForward")
+		else:
+			animated_sprite_2d.play("IdleSide")
+	
+	# Player is moving
+	else:
+		flip_sprite_direction(mouse_direction)
+		
+		if mouse_direction.y < 0 and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+			animated_sprite_2d.play("RunBack")
+		elif mouse_direction.y > 0  and (mouse_direction.x > -0.75 and mouse_direction.x < 0.75):
+			animated_sprite_2d.play("RunForward")
+		else:
+			animated_sprite_2d.play("RunSide")
+
+
+func flip_sprite_direction(mouse_direction: Vector2) -> void:
+	if mouse_direction.x < 0:
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 
 
 func handle_damage() -> void:
