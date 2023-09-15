@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = input_direction * player_speed * delta
 	
+	handle_animations(input_direction)
+	handle_damage()
+	
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
@@ -28,6 +31,22 @@ func _physics_process(delta: float) -> void:
 		use_heal_ability(10)
 	
 	move_and_collide(velocity)
+
+
+func handle_animations(input_direction: Vector2) -> void:
+	pass
+
+
+func handle_damage() -> void:
+	if enemies_in_hitbox.is_empty():
+		return
+	
+	if !hurt_timer.is_stopped():
+		return
+	
+	player_hit()
+	hurt_timer.start(1)
+
 
 func use_heal_ability(health_to_heal: int) -> void:
 	if ability_used_count >= max_ability_usage:
@@ -43,11 +62,6 @@ func heal_player_hp(health_to_heal: int) -> void:
 	current_player_health = min(current_player_health + health_to_heal, max_player_health)
 
 
-func player_death():
-	if current_player_health <= 0:
-		self.queue_free()
-
-
 func shoot() -> void:
 	var arrow: Node2D = Arrow.instantiate()
 	arrow_direction.look_at(get_global_mouse_position())
@@ -57,36 +71,16 @@ func shoot() -> void:
 
 func player_hit() -> void:
 	current_player_health -= 10
-	player_death()
-	modulate.a = 0.5
-	modulate.b = 0
-	modulate.g = 0
-	hurt_timer.start()
-	#Psuedo Hurt animation to show when I-Frames start/end
-	var tween: Tween = get_tree().create_tween()
-	var tween2: Tween = get_tree().create_tween()
-	var tween3: Tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate:a", 1, 1.5)
-	tween2.tween_property(self, "modulate:b", 1, 1)
-	tween3.tween_property(self, "modulate:g", 1, 1)
+	
+	if current_player_health <= 0:
+		self.queue_free()
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if "Enemy" in body.name:
-		if enemies_in_hitbox.is_empty():
-			enemies_in_hitbox.push_back(body.name)
-		if modulate.a == 1:
-			player_hit()
+		enemies_in_hitbox.push_back(body.name)
 
 
 func _on_hurtbox_body_exited(body: Node2D) -> void:
 	if "Enemy" in body.name:
 		enemies_in_hitbox.pop_back()
-
-
-func _on_hurt_timer_timeout() -> void:
-	modulate.a = 1
-	modulate.b = 1
-	modulate.g = 1
-	if !enemies_in_hitbox.is_empty():
-		player_hit()

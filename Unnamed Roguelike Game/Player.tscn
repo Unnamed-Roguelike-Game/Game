@@ -168,8 +168,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pcabg"]
-radius = 7.5
-height = 17.5
+radius = 5.5
+height = 24.0
 
 [sub_resource type="Animation" id="Animation_sy5mw"]
 resource_name = "IdleForward"
@@ -312,7 +312,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ju47r")
-animation = &"RunBack"
+animation = &"IdleForward"
 metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Player"]]
@@ -336,4 +336,3 @@ libraries = {
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
-[connection signal="timeout" from="Hurt_Timer" to="." method="_on_hurt_timer_timeout"]
