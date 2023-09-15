@@ -66,9 +66,9 @@ func player_hit() -> void:
 	modulate.g = 0
 	hurt_timer.start()
 	#Psuedo Hurt animation to show when I-Frames start/end
-	var tween = get_tree().create_tween()
-	var tween2 = get_tree().create_tween()
-	var tween3 = get_tree().create_tween()
+	var tween: Tween = get_tree().create_tween()
+	var tween2: Tween = get_tree().create_tween()
+	var tween3: Tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 1, 1.5)
 	tween2.tween_property(self, "modulate:b", 1, 1)
 	tween3.tween_property(self, "modulate:g", 1, 1)
