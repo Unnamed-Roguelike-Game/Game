@@ -1,23 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://vpxnb4ig426g"]
 
+[ext_resource type="Script" path="res://Player Arrow.gd" id="1_6yl53"]
 [ext_resource type="Texture2D" uid="uid://c3yn3c7tv4inn" path="res://assets/placeholder assets/items and trap_animation/arrow/Just_arrow.png" id="1_rxr3l"]
 
 [sub_resource type="GDScript" id="GDScript_fympw"]
 script/source = "extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_vx6pv"]
-script/source = "extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,7 +22,7 @@ script = SubResource("GDScript_fympw")
 
 [node name="Player Arrow" type="Area2D" parent="."]
 rotation = -1.5708
-script = SubResource("GDScript_vx6pv")
+script = ExtResource("1_6yl53")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player Arrow"]
 position = Vector2(-8, -6)
@@ -46,3 +33,5 @@ centered = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player Arrow"]
 position = Vector2(-1, 0)
 polygon = PackedVector2Array(0, 21, 2, 21, 3, 18, 4, 16, 4, 13, 3, 12, 3, 9, -1, 9, -1, 12, -2, 13, -2, 16, -1, 18)
+
+[connection signal="body_entered" from="Player Arrow" to="Player Arrow" method="_on_body_entered"]
