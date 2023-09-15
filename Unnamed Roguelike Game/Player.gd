@@ -39,12 +39,10 @@ func use_heal_ability(health_to_heal: int) -> void:
 		ability_used_count += 1
 
 
-# Heal player up to no more than their current max HP.
+# Heal player up to no more than their current max HP
 func heal_player_hp(health_to_heal: int) -> void:
-	current_player_health += health_to_heal
-	
-	if current_player_health > max_player_health:
-		current_player_health = max_player_health
+	current_player_health = min(current_player_health + health_to_heal, max_player_health)
+
 
 func player_death():
 	if current_player_health <= 0:
