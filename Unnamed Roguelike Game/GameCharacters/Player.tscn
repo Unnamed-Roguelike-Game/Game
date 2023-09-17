@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://b06g5m8ciufci"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_mnvdn"]
-[ext_resource type="PackedScene" uid="uid://vpxnb4ig426g" path="res://Projectiles/Player_Projectile.tscn" id="2_515bq"]
+[ext_resource type="PackedScene" uid="uid://vpxnb4ig426g" path="res://GameObjects/Projectiles/Player_Projectile.tscn" id="2_515bq"]
 [ext_resource type="Texture2D" uid="uid://c4iqoybbiw31l" path="res://assets/PlayerAssets/PlayerSpriteSheet.png" id="3_58hss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lacq0"]

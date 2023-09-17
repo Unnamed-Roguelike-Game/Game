@@ -6,9 +6,9 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Room" parent="." instance=ExtResource("1_2tscc")]
+[node name="StartRoom1" parent="." instance=ExtResource("1_2tscc")]
 
 [node name="Player" parent="." instance=ExtResource("2_5qbtk")]
-position = Vector2(548, 92)
+position = Vector2(573, 322)
 
 [node name="UI" parent="." instance=ExtResource("3_ym3ji")]
