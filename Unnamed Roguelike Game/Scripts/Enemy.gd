@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player: CharacterBody2D = $"../../../Player"
 
-const ENEMY_SPEED: float = 100.0
+const ENEMY_SPEED: float = 200.0
 
 var current_enemy_health: int = 100
 

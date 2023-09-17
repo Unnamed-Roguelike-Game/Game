@@ -17,7 +17,7 @@ polygon = PackedVector2Array(1, -1, 783, 0, 783, 128, 3247, 129, 3246, 3697, 164
 [node name="EnemyGroup" type="Node2D" parent="."]
 
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("2_63meg")]
-position = Vector2(419, 527)
+position = Vector2(2667, 1981)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("2_63meg")]
 position = Vector2(368, 1365)
