@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv3fpboiiwor2"]
+[gd_scene load_steps=3 format=3 uid="uid://cv3fpboiiwor2"]
 
 [ext_resource type="PackedScene" uid="uid://dlx1ifme3hnvb" path="res://GameObjects/WorldObjects/TileMap.tscn" id="1_671e7"]
+[ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://GameCharacters/Enemy.tscn" id="2_63meg"]
 
 [node name="LargeRoom1" type="Node2D"]
 
@@ -12,3 +13,29 @@ layer_0/tile_data = PackedInt32Array(65537, 131072, 4, 131073, 131072, 5, 196609
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(17, 16)
 polygon = PackedVector2Array(1, -1, 783, 0, 783, 128, 3247, 129, 3246, 3697, 1645, 3695, 1646, 4160, -974, 4160, -975, 3418, -1473, 3422, -1475, 3728, -2385, 3725, -2382, 1011, 2, 1011)
+
+[node name="EnemyGroup" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(419, 527)
+
+[node name="Enemy2" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(368, 1365)
+
+[node name="Enemy3" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(2826, 464)
+
+[node name="Enemy4" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(425, 2591)
+
+[node name="Enemy5" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(2559, 3486)
+
+[node name="Enemy6" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(-1924, 1416)
+
+[node name="Enemy7" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(-1854, 3486)
+
+[node name="Enemy8" parent="EnemyGroup" instance=ExtResource("2_63meg")]
+position = Vector2(376, 3940)

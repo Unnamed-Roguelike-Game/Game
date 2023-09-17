@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nk00r286d2ga"]
+[gd_scene load_steps=3 format=3 uid="uid://nk00r286d2ga"]
 
 [ext_resource type="PackedScene" uid="uid://dlx1ifme3hnvb" path="res://GameObjects/WorldObjects/TileMap.tscn" id="1_qncpb"]
+[ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://GameCharacters/Enemy.tscn" id="2_1df6e"]
 
 [node name="NormalRoom1" type="Node2D"]
 
@@ -12,3 +13,17 @@ position = Vector2(17, 32)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(12, 0, 1023, 0, 1022, 673, 2126, 672, 2128, 2369, 1151, 2369, 1152, 1135, -2, 1136, -1, 0)
+
+[node name="EnemyGroup" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("2_1df6e")]
+position = Vector2(326, 1063)
+
+[node name="Enemy2" parent="EnemyGroup" instance=ExtResource("2_1df6e")]
+position = Vector2(740, 1070)
+
+[node name="Enemy3" parent="EnemyGroup" instance=ExtResource("2_1df6e")]
+position = Vector2(1948, 982)
+
+[node name="Enemy4" parent="EnemyGroup" instance=ExtResource("2_1df6e")]
+position = Vector2(1631, 2274)

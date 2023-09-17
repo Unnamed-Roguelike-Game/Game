@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player: CharacterBody2D = $"../../Player"
+@onready var player: CharacterBody2D = $"../../../Player"
 
 const ENEMY_SPEED: float = 100.0
 
@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	if current_enemy_health <= 0:
 		queue_free()
 	
-	var direction_of_player: Vector2 = (player.position - self.position).normalized()
+	var direction_of_player: Vector2 = global_position.direction_to(player.global_position).normalized()
 
 	velocity = (direction_of_player * ENEMY_SPEED * delta)
 
