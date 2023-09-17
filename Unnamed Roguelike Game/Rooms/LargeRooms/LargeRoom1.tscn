@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv3fpboiiwor2"]
+[gd_scene load_steps=5 format=3 uid="uid://cv3fpboiiwor2"]
 
 [ext_resource type="PackedScene" uid="uid://dlx1ifme3hnvb" path="res://GameObjects/WorldObjects/TileMap.tscn" id="1_671e7"]
 [ext_resource type="Script" path="res://Rooms/LargeRooms/LargeRoom1.gd" id="1_oc1tn"]
 [ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://GameCharacters/Enemy.tscn" id="2_63meg"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_v0q07"]
+vertices = PackedVector2Array(51, 2303, 771, 2259, 1632, 2284, 1629, 2733, 1214, 2830, -320, 2830, 2121, 2738, 3236, 3682, 1635, 3672, 1202, 3470, 782, 172, 3235, 167, 2126, 717, 767, 730, 51, 1557, -917, 2306, -914, 2660, -332, 2866, -923, 3423, -1466, 3412, -1486, 2660, 1632, 4137, -928, 4142, -328, 3470, 38, 1040, 31, 34, 777, 33, -1492, 1560, -2348, 1043, -2340, 3714, -1489, 1587, -1478, 3716)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(4, 3, 6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(12, 11, 7, 6), PackedInt32Array(1, 0, 14, 13), PackedInt32Array(15, 0, 5, 16), PackedInt32Array(16, 5, 17, 18, 19, 20), PackedInt32Array(8, 21, 22, 18, 23), PackedInt32Array(24, 25, 26, 10, 13, 14), PackedInt32Array(24, 14, 27, 28), PackedInt32Array(29, 28, 27, 30, 20), PackedInt32Array(31, 29, 20, 19), PackedInt32Array(18, 17, 23), PackedInt32Array(8, 23, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(31, 34, 777, 33, 782, 172, 3235, 167, 3236, 3682, 1635, 3672, 1632, 4137, -928, 4142, -923, 3423, -1466, 3412, -1478, 3716, -2340, 3714, -2348, 1043, 38, 1040), PackedVector2Array(767, 730, 2126, 717, 2121, 2738, 1629, 2733, 1632, 2284, 771, 2259), PackedVector2Array(-1489, 1587, -1486, 2660, -914, 2660, -917, 2306, 51, 2303, 51, 1557, -1492, 1560), PackedVector2Array(-332, 2866, -328, 3470, 1202, 3470, 1214, 2830, -320, 2830)])
 
 [node name="LargeRoom1" type="Node2D"]
 script = ExtResource("1_oc1tn")
@@ -35,3 +40,6 @@ position = Vector2(-1854, 3486)
 
 [node name="Enemy8" parent="EnemyGroup" instance=ExtResource("2_63meg")]
 position = Vector2(376, 3940)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_v0q07")
