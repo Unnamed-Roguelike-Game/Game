@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bje1j8ngmq02f"]
 
-[ext_resource type="Script" path="res://Enemy.gd" id="1_f6m8k"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_f6m8k"]
 [ext_resource type="Texture2D" uid="uid://q27rjo51gs7l" path="res://assets/placeholder assets/character and tileset/Dungeon_Character_2.png" id="1_lwstp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33c6h"]
