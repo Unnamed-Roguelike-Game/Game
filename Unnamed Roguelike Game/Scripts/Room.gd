@@ -16,6 +16,6 @@ func check_if_room_cleared() -> void:
 
 
 func spawn_item() -> void:
-	if room_cleared and !item_spawned:
+	if !item_spawned and room_cleared:
 		item_spawned = true
 		print("item time")
