@@ -8,8 +8,8 @@ const ENEMY_SPEED: float = 200.0
 var current_enemy_health: int = 100
 
 func _ready() -> void:
-	navigation_agent.path_desired_distance = 4.0
-	navigation_agent.target_desired_distance = 4.0
+	navigation_agent.path_desired_distance = 2.0
+	navigation_agent.target_desired_distance = 2.0
 	
 	call_deferred("actor_setup")
 
