@@ -4,6 +4,7 @@ class_name Room
 
 @onready var enemy_group: Node2D = $"EnemyGroup"
 
+var room_active: bool = false
 var room_cleared: bool = false
 var item_spawned: bool = false
 

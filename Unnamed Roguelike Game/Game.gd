@@ -4,9 +4,11 @@ extends Node2D
 @export var LargeRoom1: PackedScene
 
 @onready var room_group: Node2D = $"Rooms"
+@onready var spawn_points: Node2D = $"SpawnPointGroup"
 
-const MAX_ROOMS: int = 1
+const MAX_ROOMS: int = 3
 
+var current_spawn_point: int = 0
 var rooms_generation_done: bool = false
 
 func _process(_delta: float) -> void:
@@ -27,4 +29,6 @@ func spawn_random_room() -> void:
 	else:
 		room = NormalRoom1.instantiate()
 	
+	room.position = (spawn_points.get_child(current_spawn_point)).get("position")
 	room_group.add_child(room)
+	current_spawn_point += 1
