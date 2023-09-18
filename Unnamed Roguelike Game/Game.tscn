@@ -23,10 +23,10 @@ position = Vector2(581, 333)
 [node name="SpawnPoint1" type="Marker2D" parent="SpawnPointGroup"]
 
 [node name="SpawnPoint2" type="Marker2D" parent="SpawnPointGroup"]
-position = Vector2(36, 3544)
+position = Vector2(81, 8907)
 
 [node name="SpawnPoint3" type="Marker2D" parent="SpawnPointGroup"]
-position = Vector2(-5161, -13)
+position = Vector2(-13488, -36)
 
 [node name="SpawnPoint4" type="Marker2D" parent="SpawnPointGroup"]
-position = Vector2(6308, 47)
+position = Vector2(17011, 24)

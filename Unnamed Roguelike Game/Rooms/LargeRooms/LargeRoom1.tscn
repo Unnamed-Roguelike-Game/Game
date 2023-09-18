@@ -43,3 +43,10 @@ position = Vector2(376, 3940)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_v0q07")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
+polygon = PackedVector2Array(41, 39, 764, 30, 767, 164, 3212, 167, 3230, 3670, 1639, 3667, 1633, 4132, -914, 4123, -920, 3395, -1481, 3386, -1499, 3694, -2308, 3688, -2332, 1036, 32, 1063)
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

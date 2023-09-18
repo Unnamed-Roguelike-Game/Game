@@ -6,7 +6,7 @@ extends Node2D
 @onready var room_group: Node2D = $"Rooms"
 @onready var spawn_points: Node2D = $"SpawnPointGroup"
 
-const MAX_ROOMS: int = 3
+const MAX_ROOMS: int = 4
 
 var current_spawn_point: int = 0
 var rooms_generation_done: bool = false

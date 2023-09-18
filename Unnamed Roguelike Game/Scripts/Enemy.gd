@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 const ENEMY_SPEED: float = 200.0
 
+var player_is_in_room: bool = false
 var current_enemy_health: int = 100
 
 func _ready() -> void:
@@ -13,8 +14,9 @@ func _ready() -> void:
 	
 	call_deferred("actor_setup")
 
+
 func _physics_process(delta: float) -> void:
-	if player == null:
+	if player == null or !player_is_in_room:
 		return
 	
 	if current_enemy_health <= 0:

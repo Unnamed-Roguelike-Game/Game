@@ -3,8 +3,8 @@ extends Node2D
 class_name Room
 
 @onready var enemy_group: Node2D = $"EnemyGroup"
+@onready var player_detector: Area2D = $"PlayerDetector"
 
-var room_active: bool = false
 var room_cleared: bool = false
 var item_spawned: bool = false
 
