@@ -19,14 +19,3 @@ position = Vector2(581, 333)
 [node name="UI" parent="." instance=ExtResource("3_ym3ji")]
 
 [node name="SpawnPointGroup" type="Node2D" parent="."]
-
-[node name="SpawnPoint1" type="Marker2D" parent="SpawnPointGroup"]
-
-[node name="SpawnPoint2" type="Marker2D" parent="SpawnPointGroup"]
-position = Vector2(0, 5973)
-
-[node name="SpawnPoint3" type="Marker2D" parent="SpawnPointGroup"]
-position = Vector2(-7540, -8)
-
-[node name="SpawnPoint4" type="Marker2D" parent="SpawnPointGroup"]
-position = Vector2(9934, -30)

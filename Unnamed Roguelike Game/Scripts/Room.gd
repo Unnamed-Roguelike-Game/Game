@@ -4,6 +4,7 @@ class_name Room
 
 @onready var enemy_group: Node2D = $"EnemyGroup"
 @onready var player_detector: Area2D = $"PlayerDetector"
+@onready var room_spawn_point: Marker2D = $"SpawnPoint"
 
 var room_cleared: bool = false
 var item_spawned: bool = false
