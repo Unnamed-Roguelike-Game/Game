@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var StartRoom: PackedScene
 @export var NormalRoom1: PackedScene
 @export var LargeRoom1: PackedScene
 
@@ -39,9 +40,13 @@ func spawn_random_room() -> void:
 	var room_choice: float = randf_range(0, 1)
 	var room: Node2D
 	
-	if room_choice > 0.5:
+	
+	if current_spawn_point == 0:
+		room = StartRoom.instantiate()
+	
+	elif room_choice > 0.5:
 		room = LargeRoom1.instantiate()
-		
+	
 	else:
 		room = NormalRoom1.instantiate()
 	

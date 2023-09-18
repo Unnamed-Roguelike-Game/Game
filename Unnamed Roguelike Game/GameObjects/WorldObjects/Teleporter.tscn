@@ -21,7 +21,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b6jh8"]
 
 [node name="Teleporter" type="AnimatedSprite2D"]
-scale = Vector2(10, 10)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_o2m3d")
 script = ExtResource("2_7pobt")
 

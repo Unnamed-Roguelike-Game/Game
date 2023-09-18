@@ -5,7 +5,7 @@ extends AnimatedSprite2D
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player" and room.room_cleared:
+	if game.current_room_index == 0 or (body.name == "Player" and room.room_cleared):
 		
 		game.current_room_index += 1
 		
