@@ -204,7 +204,6 @@ one_shot = true
 [node name="Projectile Spawn" type="Marker2D" parent="." groups=["Player"]]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.1, 0.1)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 rotation_smoothing_enabled = true

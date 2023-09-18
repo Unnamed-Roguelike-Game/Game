@@ -6,7 +6,7 @@ extends CharacterBody2D
 const ENEMY_SPEED: float = 200.0
 
 var player_is_in_room: bool = false
-var current_enemy_health: int = 100
+var current_enemy_health: int = 1
 
 func _ready() -> void:
 	navigation_agent.path_desired_distance = 2.0

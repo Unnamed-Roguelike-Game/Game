@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://nk00r286d2ga"]
+[gd_scene load_steps=6 format=3 uid="uid://nk00r286d2ga"]
 
 [ext_resource type="Script" path="res://Rooms/NormalRooms/NormalRoom1.gd" id="1_g7vfv"]
 [ext_resource type="PackedScene" uid="uid://dlx1ifme3hnvb" path="res://GameObjects/WorldObjects/TileMap.tscn" id="1_qncpb"]
 [ext_resource type="PackedScene" uid="uid://bje1j8ngmq02f" path="res://GameCharacters/Enemy.tscn" id="2_1df6e"]
+[ext_resource type="PackedScene" uid="uid://badjuf2ka04r3" path="res://GameObjects/WorldObjects/Teleporter.tscn" id="4_8rhec"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8vkge"]
 vertices = PackedVector2Array(50, 1138, 47, 58, 1005, 63, 1002, 730, 1193, 1135, 2115, 735, 2118, 2360, 1200, 2362)
@@ -24,20 +25,26 @@ position = Vector2(326, 1063)
 position = Vector2(740, 1070)
 
 [node name="Enemy3" parent="EnemyGroup" instance=ExtResource("2_1df6e")]
-position = Vector2(1948, 982)
+position = Vector2(1067, 972)
 
 [node name="Enemy4" parent="EnemyGroup" instance=ExtResource("2_1df6e")]
-position = Vector2(1631, 2274)
+position = Vector2(1207, 818)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_8vkge")
+metadata/_edit_lock_ = true
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerDetector"]
 polygon = PackedVector2Array(49, 60, 1003, 60, 1005, 728, 2122, 728, 2122, 2379, 1193, 2381, 1195, 1127, 49, 1141)
+metadata/_edit_lock_ = true
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(457, 163)
+position = Vector2(521, 301)
+
+[node name="Teleporter" parent="." instance=ExtResource("4_8rhec")]
+position = Vector2(185, 666)
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
