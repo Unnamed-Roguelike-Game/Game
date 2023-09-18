@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vpxnb4ig426g"]
 
-[ext_resource type="Script" path="res://Player Arrow.gd" id="1_6yl53"]
+[ext_resource type="Script" path="res://Scripts/Player Arrow.gd" id="1_6yl53"]
 [ext_resource type="Texture2D" uid="uid://c3yn3c7tv4inn" path="res://assets/placeholder assets/items and trap_animation/arrow/Just_arrow.png" id="1_rxr3l"]
 
 [node name="Player_Projectile" type="Node2D"]
