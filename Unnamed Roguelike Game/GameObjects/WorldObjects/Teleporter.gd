@@ -17,6 +17,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var target_room_spawn_point = target_room.get_node("SpawnPoint")
 		
 		# Need to add offset Vector2 of (-250, -150) to ensure player spawns in center of room.
-		const offset: Vector2 = Vector2(-250, -150)
-		body.global_position = target_room_spawn_point.global_position + offset
+		const room_offset: Vector2 = Vector2(-250, -150)
+		body.global_position = target_room_spawn_point.global_position + room_offset
 		
