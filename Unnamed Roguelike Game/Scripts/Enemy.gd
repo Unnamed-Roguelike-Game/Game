@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = $"../../../../Player"
 @onready var navigation_agent: NavigationAgent2D = $"NavigationAgent2D"
 
-const ENEMY_SPEED: float = 200.0
+const ENEMY_SPEED: float = 50.0
 
 var player_is_in_room: bool = false
 var current_enemy_health: int = 1

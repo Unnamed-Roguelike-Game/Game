@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var Arrow: PackedScene
-@export var player_speed: float = 300.0
+@export var player_speed: float = 100.0
 
 @onready var arrow_direction: Marker2D = $"Projectile Spawn"
 @onready var hurt_timer: Timer = $"Hurt_Timer"
