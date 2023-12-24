@@ -7,7 +7,7 @@ extends Node2D
 @onready var spawn_points: Node2D = $"SpawnPointGroup"
 
 const MAX_ROOMS: int = 4
-const DISTANCE_BETWEEN_ROOMS: float = 10000.0
+const DISTANCE_BETWEEN_ROOMS: float = 1000.0
 
 var current_spawn_point: int = 0
 var current_room_index: int = 0
@@ -30,13 +30,11 @@ func _process(_delta: float) -> void:
 func create_room_spawn_points() -> void:
 	for i in range(MAX_ROOMS):
 		var marker: Marker2D = Marker2D.new()
-		marker.position = Vector2(i * DISTANCE_BETWEEN_ROOMS, 0) 
-		
+		marker.position = Vector2(i * DISTANCE_BETWEEN_ROOMS - 270, -200) 
 		spawn_points.add_child(marker)
 
 
 func spawn_random_room() -> void:
-	var room_choice: float = randf_range(0, 1)
 	var room: Node2D
 	
 	if current_spawn_point == 0:

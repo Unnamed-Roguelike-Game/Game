@@ -14,7 +14,6 @@ NormalRoom = ExtResource("4_j1w8y")
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_5qbtk")]
-position = Vector2(581, 333)
 
 [node name="UI" parent="." instance=ExtResource("3_ym3ji")]
 
