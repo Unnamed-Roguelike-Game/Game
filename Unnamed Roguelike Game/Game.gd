@@ -1,8 +1,7 @@
 extends Node2D
 
 @export var StartRoom: PackedScene
-@export var NormalRoom1: PackedScene
-@export var LargeRoom1: PackedScene
+@export var Room: PackedScene
 
 @onready var room_group: Node2D = $"Rooms"
 @onready var spawn_points: Node2D = $"SpawnPointGroup"
@@ -40,15 +39,7 @@ func spawn_random_room() -> void:
 	var room_choice: float = randf_range(0, 1)
 	var room: Node2D
 	
-	
-	if current_spawn_point == 0:
-		room = StartRoom.instantiate()
-	
-	elif room_choice > 0.5:
-		room = LargeRoom1.instantiate()
-	
-	else:
-		room = NormalRoom1.instantiate()
+	room = Room.instantiate()
 	
 	room.position = (spawn_points.get_child(current_spawn_point)).get("position")
 	room_group.add_child(room)
